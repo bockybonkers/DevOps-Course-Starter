@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}To-Do App{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <input type="text" name="input" value={{request.form.input}}>
+    <input type="submit">
+</form>
+{% endblock %}
