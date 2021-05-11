@@ -14,21 +14,17 @@
         <table>
           <thead>
             <tr>
-          {% for header in headers %}
-          <th>{{header}}</th>
-          {% endfor %}
-        </tr>
-        </thead>
 
-        <tbody>
-          {% for result in results %}
-          <tr>
-            {% for k, val in result.items() %}
-              <td>{{val}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for todo in todos %}
+            <li>{{todo.id}} - "To Do" - {{todo.name}}</li>
+            <form method="post" action="/">
+              <button type="submit" name="cardid" value={{todo.id}}> Move to Done </button>
+            </form>
             {% endfor %}
-          </tr>
-          {% endfor %}
-        </tbody>
+          </tbody>
         </table>
       </ul>
     </div>
