@@ -49,4 +49,11 @@ You should see output similar to the following:
  * Debugger is active!
  * Debugger PIN: 226-556-590
 ```
+
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+The below credentials need to be created in trello.com and added to the .env
+TRELLO_TOKEN
+TRELLO_KEY
+TRELLO_TO_DO_LIST_ID
+TRELLO_DONE_LIST_ID
