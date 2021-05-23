@@ -13,6 +13,20 @@ trelloToken = app.config['TRELLO_TOKEN']
 toDoListId = app.config['TRELLO_TO_DO_LIST_ID']
 doneListId = app.config['TRELLO_DONE_LIST_ID']
 
+def getCards():
+    lists = {"To Do": toDoListId, "Done": doneListId}
+    cardList = []
+    for key in lists:
+        headers = {"Accept": "application/json"}
+        url = f"https://api.trello.com/1/lists/{lists[key]}/cards?key={trelloKey}&token={trelloToken}"
+        resp = requests.request("GET", url, headers=headers)
+        cards=resp.json()
+        for card in cards:
+            card.update({"listName": key})
+            cardList.append(card) 
+    return cardList
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -21,10 +35,8 @@ def index():
         response = requests.request("PUT", url)
         return redirect('/')
     if request.method == 'GET':
-        headers = {"Accept": "application/json"}
-        url = f"https://api.trello.com/1/lists/{toDoListId}/cards?key={trelloKey}&token={trelloToken}"
-        response = requests.request("GET", url, headers=headers)
-        return render_template('index.html', todos=response.json())
+        return render_template('index.html', cards=getCards())
+        
 
 
 @app.route('/add', methods=['GET', 'POST'])

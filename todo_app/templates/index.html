@@ -18,10 +18,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for todo in todos %}
-            <li>{{todo.id}} - "To Do" - {{todo.name}}</li>
+            {% for card in cards %}
+            <li>{{card.id}} - {{card.listName}} - {{card.name}}</li>
             <form method="post" action="/">
-              <button type="submit" name="cardid" value={{todo.id}}> Move to Done </button>
+              {% if card.listName == 'To Do'%}
+              <button type="submit" name="cardid" value={{card.id}}> Move to Done </button>
+              {% endif %}
             </form>
             {% endfor %}
           </tbody>

@@ -35,13 +35,11 @@ The `.env` file is used by flask to set environment variables when running `flas
 ## Running the App
 
 Once the all dependencies have been installed, start the Flask app in development mode within the poetry environment by running:
-
 ```bash
 $ poetry run flask run
 ```
 
 You should see output similar to the following:
-
 ```bash
  * Serving Flask app "app" (lazy loading)
  * Environment: development
@@ -54,4 +52,8 @@ You should see output similar to the following:
 
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
 
-The .env file requires Trello secrets to connect to their API's
+The below credentials need to be created in trello.com and added to the .env
+TRELLO_TOKEN
+TRELLO_KEY
+TRELLO_TO_DO_LIST_ID
+TRELLO_DONE_LIST_ID
